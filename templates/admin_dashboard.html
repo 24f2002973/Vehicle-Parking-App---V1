@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<div class="row mt-4">
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Parking Lots</h5>
+        <p class="card-text">{{ lots }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Users</h5>
+        <p class="card-text">{{ users }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Spots</h5>
+        <p class="card-text">{{ spots }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Reservations</h5>
+        <p class="card-text">{{ reservations }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mt-4">
+  <a href="{{ url_for('manage_lots') }}" class="btn btn-primary">Manage Lots</a>
+  <a href="{{ url_for('manage_users') }}" class="btn btn-info">View Users</a>
+</div>
+{% endblock %}

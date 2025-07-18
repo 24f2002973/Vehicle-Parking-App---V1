@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Your Dashboard</h2>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        Your Reservation
+      </div>
+      <div class="card-body">
+        {% if reservation %}
+          <p>Parking Spot: <strong>#{{ spot.spot_number }} at {{ lot.name }}</strong></p>
+          <p>Parking Time: <strong>{{ reservation.parking_timestamp.strftime('%Y-%m-%d %H:%M') }}</strong></p>
+          <p>Cost: <strong>${{ reservation.parking_cost }}</strong></p>
+          <form method="post" action="{{ url_for('release_spot') }}">
+            <button type="submit" class="btn btn-danger">Release Spot</button>
+          </form>
+        {% else %}
+          <p class="text-muted">No active reservation.</p>
+          <a href="{{ url_for('user_view_lots') }}" class="btn btn-primary">Reserve a Spot</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
