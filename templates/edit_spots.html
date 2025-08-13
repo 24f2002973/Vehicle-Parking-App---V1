@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Edit Spots for {{ lot.name }}</h2>
+  <p>Current number of spots: {{ lot.max_spots }}</p>
+  <form method="post">
+    <div class="mb-3">
+      <label class="form-label">New number of spots</label>
+      <input type="number" class="form-control" name="new_max_spots" value="{{ lot.max_spots }}" min="1" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Spots</button>
+    <a href="{{ url_for('manage_lots') }}" class="btn btn-secondary">Cancel</a>
+  </form>
+{% endblock %}

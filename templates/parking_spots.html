@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>{{ lot.name }} - Parking Spots</h2>
+<p>Address: {{ lot.address }}</p>
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th>Spot Number</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for spot in spots %}
+      <tr>
+        <td>{{ spot.spot_number }}</td>
+        <td>
+          {% if spot.status == 'A' %}
+            <span class="text-success">Available</span>
+          {% else %}
+            <span class="text-danger">Occupied</span>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="{{ url_for('manage_lots') }}" class="btn btn-secondary">Back to Lots</a>
+{% endblock %}
